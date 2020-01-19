@@ -18,7 +18,7 @@ import cn.caliuyang.cccar.constand.PropertiesUtil;
 public class Demo extends JFrame {
 
 	// 定义组件
-	JTextField text3 = new JTextField(10), text4= new JTextField(10) ,text5= new JTextField(10) ,text8 = new JTextField(10),text9 = new JTextField(10),text10 = new JTextField(10);
+	JTextField text0= new JTextField(10) ,  text3_1 = new JTextField(10) ,  text3_2 = new JTextField(10), text4= new JTextField(10) ,text5= new JTextField(10) ,text8 = new JTextField(10),text9 = new JTextField(10),text10 = new JTextField(10);
 	JRadioButton button1_1, button1_2 , button1_3, button1_4;
 	JRadioButton button2_1, button2_2 ;
 	JRadioButton button6_1, button6_2, button6_3, button6_4;
@@ -48,11 +48,16 @@ public class Demo extends JFrame {
 	// 构造函数
 	private Demo() {
 		this.setLayout(new GridLayout(25, 5));
+		JPanel jp0 = new JPanel();
+		JLabel label0 = new JLabel("车型：");
+		jp0.add(label0);
+		jp0.add(text0);
+		this.add(jp0);
+		
 		//=======变速箱========
 		JPanel select1 = new JPanel();
 		JLabel label1 = new JLabel("变速箱：");
 		button1_1 = new JRadioButton("干式双离合");
-		button1_1.setSelected(true);
 		button1_2 = new JRadioButton("湿式双离合");
 		button1_3 = new JRadioButton("AT");
 		button1_4 = new JRadioButton("CVT");
@@ -68,7 +73,6 @@ public class Demo extends JFrame {
 		JPanel select2 = new JPanel();
 		JLabel label2 = new JLabel("发动机：");
 		button2_1 = new JRadioButton("L3");
-		button2_1.setSelected(true);
 		button2_2 = new JRadioButton("L4");
 		button2_1.addActionListener(new ButtonListener("2_1"));
 		button2_2.addActionListener(new ButtonListener("2_2"));
@@ -78,9 +82,14 @@ public class Demo extends JFrame {
 		this.add(select2);
 		//=======动力10-X零百加速时间 ========
 		JPanel jp3 = new JPanel();
-		JLabel label3 = new JLabel("0-100加速s：");
-		jp3.add(label3);
-		jp3.add(text3);
+		JLabel label3_1 = new JLabel("功率：");
+		jp3.add(label3_1);
+		jp3.add(text3_1);
+		
+		JLabel label3_2 = new JLabel("扭矩：");
+		jp3.add(label3_2);
+		jp3.add(text3_2);
+		
 		this.add(jp3);
 		
 		//=======#燃油经济性 10-X油耗 ========
@@ -90,29 +99,29 @@ public class Demo extends JFrame {
 		jp4.add(text4);
 		this.add(jp4);
 		
-		// #车身结构 - 结合已公布测评数据 或 车身架构评分 满分10
+		// #车身结构+悬架 - 结合已公布测评数据 或 车身架构评分 满分16
 		JPanel jp5 = new JPanel();
-		JLabel label5 = new JLabel("车身结构 - 结合已公布测评或车身架构, 满分10：");
+		JLabel label5 = new JLabel("车身结构&悬架 - 结合已公布测评或车身架构, 满分12+4：");
 		jp5.add(label5);
 		jp5.add(text5);
 		this.add(jp5);
 		
-		// #轮胎分值=价格/100
-		JPanel jp8 = new JPanel();
-		JLabel label8 = new JLabel("单条轮胎价格：");
-		jp8.add(label8);
-		jp8.add(text8);
-		this.add(jp8);
+//		// #轮胎分值=（价格-400）/100
+//		JPanel jp8 = new JPanel();
+//		JLabel label8 = new JLabel("单条轮胎价格：");
+//		jp8.add(label8);
+//		jp8.add(text8);
+//		this.add(jp8);
 		// 外观评分 满分10 
 		JPanel jp9 = new JPanel();
-		JLabel label9 = new JLabel("外观评分 满分10 ：");
+		JLabel label9 = new JLabel("外观评分 满分4 ：");
 		jp9.add(label9);
 		jp9.add(text9);
 		this.add(jp9);
 		
 		//内饰评分 满分5 
 		JPanel jp10 = new JPanel();
-		JLabel label10 = new JLabel("内饰评分 满分5：");
+		JLabel label10 = new JLabel("内饰评分 满分4：");
 		jp10.add(label10);
 		jp10.add(text10);
 		this.add(jp10);
@@ -148,7 +157,7 @@ public class Demo extends JFrame {
 		addAllButton(select7, button7s);
 		this.add(select7);
 		
-		//=======车灯========
+		//=======车灯========c
 		JPanel select11 = new JPanel();
 		JLabel label11 = new JLabel("刹车制动：");
 		button11_1 = new JRadioButton("LED");
@@ -170,7 +179,6 @@ public class Demo extends JFrame {
 		button12_3 = new JRadioButton("360全息");
 		button12_4 = new JRadioButton("行车记录仪");
 		button12_5 = new JRadioButton("电动后备箱");
-		button12_6 = new JRadioButton("方向盘加热");
 		button12_7 = new JRadioButton("座椅加热");
 		button12_8 = new JRadioButton("座椅调节");
 		button12_9 = new JRadioButton("座椅真皮");
@@ -180,7 +188,6 @@ public class Demo extends JFrame {
 		button12_3.addActionListener(new ButtonListener("12_3"));
 		button12_4.addActionListener(new ButtonListener("12_4"));
 		button12_5.addActionListener(new ButtonListener("12_5"));
-		button12_6.addActionListener(new ButtonListener("12_6"));
 		button12_7.addActionListener(new ButtonListener("12_7"));
 		button12_8.addActionListener(new ButtonListener("12_8"));
 		button12_9.addActionListener(new ButtonListener("12_9"));
@@ -197,7 +204,9 @@ public class Demo extends JFrame {
 		//=======confirm========
 		JPanel jpconfirm = new JPanel();
 		button1 = new JButton("确定");
+		button2 = new JButton("重置");
 		jpconfirm.add(button1);
+		jpconfirm.add(button2);
 		this.add(jpconfirm);
 
 		// 确认按下去获取
@@ -205,8 +214,13 @@ public class Demo extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					String t3 = text3.getText();
-					double dongli = (10- Double.valueOf(t3)) * Double.valueOf(PropertiesUtil.getProperty("dongli.Per"));
+					String t0 = text0.getText();
+					String t3_1 = text3_1.getText();
+					String t3_2 = text3_2.getText();
+					double gonglvPer = Double.valueOf(PropertiesUtil.getProperty("dongli.gonglv.Per"));
+					double dongliPer = Double.valueOf(PropertiesUtil.getProperty("dongli.niuju.Per"));
+					
+ 					double dongli = (Double.valueOf(t3_1)*gonglvPer + Double.valueOf(t3_2)*dongliPer)/100 * Double.valueOf(PropertiesUtil.getProperty("dongli.Per"));
 					
 					String t4 = text4.getText();
 					double youhao = (10- Double.valueOf(t4)) * Double.valueOf(PropertiesUtil.getProperty("youhao.Per"));
@@ -214,8 +228,8 @@ public class Demo extends JFrame {
 					String t5 = text5.getText();
 					double jiegou = (Double.valueOf(t5)) * Double.valueOf(PropertiesUtil.getProperty("jiegou.Per"));
 					
-					String t8 = text8.getText();
-					double luntai = (Double.valueOf(t8)) * Double.valueOf(PropertiesUtil.getProperty("luntai.jiage.Per")) / 100;
+//					String t8 = text8.getText();
+//					double luntai = (Double.valueOf(t8)) * Double.valueOf(PropertiesUtil.getProperty("luntai.jiage.Per")) / 100;
 					
 					String t9 = text9.getText();
 					double waiguan = (Double.valueOf(t9)) * Double.valueOf(PropertiesUtil.getProperty("waiguan.Per"));
@@ -223,9 +237,40 @@ public class Demo extends JFrame {
 					String t10 = text10.getText();
 					double neishi = (Double.valueOf(t10)) * Double.valueOf(PropertiesUtil.getProperty("neishi.Per"));
 					
-					double zongfen = biansu + fadong + dongli + youhao + jiegou + anquan + shache + luntai
+					double zongfen = biansu + fadong + dongli + youhao + jiegou + anquan + shache
 							+ waiguan + neishi + chedeng + peizhi ;
-					JOptionPane.showMessageDialog(null, "总分=" + zongfen);
+					JOptionPane.showMessageDialog(null, 
+							"变速箱=" + biansu +"\n" + 
+							"发动机=" + fadong +"\n" + 
+							"动力=" + dongli +"\n" + 
+							"油耗=" + youhao +"\n" + 
+							"结构+悬架=" + jiegou +"\n" + 
+							"安全性=" + anquan +"\n" + 
+							"刹车=" + shache +"\n" + 
+							"外观+内饰=" + (waiguan+neishi) +"\n" + 
+							"车灯+配置=" + (chedeng+peizhi) +"\n" + 
+							t0 + "的总分=" + zongfen);
+				} catch (Exception exception) {
+					JOptionPane.showMessageDialog(null, exception.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+		
+		// 重置按下去获取
+		button1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					biansu = 0;					fadong = 0;					anquan = 0;					shache = 0;					chedeng = 0;					peizhi = 0;
+					text0.setText("");text3_1.setText("");text3_2.setText("");text4.setText("");text5.setText("");text8.setText("");text9.setText("");text10.setText("");
+					button1_1.setSelected(false); button1_2.setSelected(false); button1_3.setSelected(false);button1_4.setSelected(false);
+					button2_1.setSelected(false); button2_2.setSelected(false);
+					button6_1.setSelected(false); button6_2.setSelected(false);button6_3.setSelected(false);button6_4.setSelected(false);
+					button7_1.setSelected(false); button7_2.setSelected(false);button7_3.setSelected(false);
+					button11_1.setSelected(false); button11_2.setSelected(false); button11_3.setSelected(false);
+					button12_1.setSelected(false); button12_2.setSelected(false); button12_3.setSelected(false); button12_4.setSelected(false); button12_5.setSelected(false); 
+					button12_6.setSelected(false); button12_7.setSelected(false); button12_8.setSelected(false); button12_9.setSelected(false); button12_10.setSelected(false); button12_11.setSelected(false);
+					button1.setSelected(false);button2.setSelected(false);;
 				} catch (Exception exception) {
 					JOptionPane.showMessageDialog(null, exception.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
 				}
